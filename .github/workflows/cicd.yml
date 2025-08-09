@@ -10,7 +10,14 @@ jobs:
     runs-on: [self-hosted, local]
     steps:
       - uses: actions/checkout@v4
-      - run: |
+
+      - name: Deploy with Docker Compose
+        run: |
           docker-compose down || true
           docker-compose build
           docker-compose up -d
+        working-directory: ./  # change if docker-compose.yml is in subfolder
+
+      - name: Verify deployment
+        run: docker ps
+
