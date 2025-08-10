@@ -31,7 +31,7 @@ services:
     depends_on:
       - server
     ports:
-      - "3001:3000"
+      - "3001:80"
 
 volumes:
   mongo_data:
